@@ -19,12 +19,12 @@ class _PracticeApiState extends State<PracticeApi> {
     var response =await client.get(myuri);
 
     if(response.statusCode==200){
-       data = jsonDecode(response.body);
+     var data = jsonDecode(response.body);
        print(data);
     }
-    var name= data["name"];
-    print(name);
-    return welcomeFromJson(jsonEncode(data));
+    // var name= data["name"];
+    // //print(name);
+    return welcomeFromJson((response.body));
 
   }
   setDataFromJson ()async{
@@ -36,7 +36,6 @@ class _PracticeApiState extends State<PracticeApi> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.getApiData();
     setDataFromJson ();
 
   }
@@ -45,7 +44,7 @@ class _PracticeApiState extends State<PracticeApi> {
       appBar: AppBar(title: Text("New page"),),
       body:ListView.builder(
           itemCount: newList.length,
-          itemBuilder: (BuildContext contex, int index){
+          itemBuilder: (BuildContext context, int index){
             return
               ListTile(
                 title:Text(newList[index].name),
