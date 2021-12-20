@@ -1,6 +1,7 @@
 // To parse this JSON data, do
 //
 //     final welcome = welcomeFromJson(jsonString);
+
 import 'dart:convert';
 
 List<Welcome> welcomeFromJson(String str) =>
@@ -15,8 +16,7 @@ class Welcome {
     required this.name,
     required this.image,
     required this.level,
-    this.parentId,
-    this.children,
+     this.parentId,
   });
 
   int id;
@@ -24,7 +24,6 @@ class Welcome {
   Image? image;
   String level;
   int? parentId;
-  List<Welcome>? children;
 
   factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
         id: json["id"],
@@ -32,10 +31,6 @@ class Welcome {
         image: imageValues.map[json["image"]],
         level: json["level"],
         parentId: json["parentId"] == null ? null : json["parentId"],
-        children: json["children"] == null
-            ? null
-            : List<Welcome>.from(
-                json["children"].map((x) => Welcome.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,9 +39,6 @@ class Welcome {
         "image": imageValues.reverse![image],
         "level": level,
         "parentId": parentId == null ? null : parentId,
-        "children": children == null
-            ? null
-            : List<dynamic>.from(children!.map((x) => x.toJson())),
       };
 }
 

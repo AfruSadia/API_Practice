@@ -41,13 +41,15 @@ class _PracticeApiState extends State<PracticeApi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         title: Text("New page"),
       ),
       body: ListView.builder(
           itemCount: newList.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: Text(newList[index].name),
+              title: Text(newList[index].id.toString()),
+              subtitle: Text(newList[index].name),
 
             );
           }),
